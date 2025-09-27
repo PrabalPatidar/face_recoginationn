@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Results - Face Scan Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Scan Results</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/scan">Scan</a>
+                <a href="/faces">Faces</a>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="results-container">
+                <div class="results-summary">
+                    <h2>Scan Summary</h2>
+                    <div class="summary-stats">
+                        <div class="stat">
+                            <span class="stat-label">Faces Detected:</span>
+                            <span class="stat-value" id="facesCount">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Processing Time:</span>
+                            <span class="stat-value" id="processingTime">0ms</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Scan Type:</span>
+                            <span class="stat-value" id="scanType">Detection</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-results">
+                    <h2>Detected Faces</h2>
+                    <div id="imageContainer" class="image-container">
+                        <img id="resultImage" src="" alt="Scan Result" style="display: none;">
+                        <canvas id="faceCanvas" style="display: none;"></canvas>
+                    </div>
+                </div>
+                
+                <div class="face-details">
+                    <h2>Face Details</h2>
+                    <div id="faceDetails" class="details-list">
+                        <p class="placeholder">No faces detected</p>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button onclick="window.location.href='/scan'" class="btn btn-secondary">Scan Another Image</button>
+                    <button onclick="downloadResults()" class="btn btn-primary">Download Results</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/results.js') }}"></script>
+</body>
+</html>

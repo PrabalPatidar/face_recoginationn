@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Scan - Face Scan Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Face Scan</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/scan" class="active">Scan</a>
+                <a href="/faces">Faces</a>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="scan-container">
+                <div class="upload-section">
+                    <h2>Upload Image</h2>
+                    <form id="scanForm" enctype="multipart/form-data">
+                        <div class="file-upload">
+                            <input type="file" id="imageInput" name="image" accept="image/*" required>
+                            <label for="imageInput">Choose Image</label>
+                        </div>
+                        <div class="scan-options">
+                            <label>
+                                <input type="radio" name="scanType" value="detect" checked>
+                                Face Detection
+                            </label>
+                            <label>
+                                <input type="radio" name="scanType" value="recognize">
+                                Face Recognition
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Scan Image</button>
+                    </form>
+                </div>
+                
+                <div class="results-section">
+                    <h2>Results</h2>
+                    <div id="results" class="results-container">
+                        <p class="placeholder">Upload an image to see results</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/scan.js') }}"></script>
+</body>
+</html>
